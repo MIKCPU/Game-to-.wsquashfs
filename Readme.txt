@@ -1,3 +1,9 @@
+```
+
+
+
+English:
+
 Instructions:
 1 - In the game folder, copy the contents of the "Files for creation" folder and the contents of the game folder into the "game" folder.
 
