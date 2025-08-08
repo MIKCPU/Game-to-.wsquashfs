@@ -18,14 +18,14 @@ if not exist "%MKTOOL%" (
 echo Add-Type -AssemblyName System.Windows.Forms > select_folder.ps1
 echo $dialog = New-Object System.Windows.Forms.FolderBrowserDialog >> select_folder.ps1
 echo $dialog.Description = "Seleziona la cartella da comprimere" >> select_folder.ps1
-echo if ($dialog.ShowDialog() -eq "OK") { $dialog.SelectedPath } >> select_folder.ps1
+echo if ($dialog.ShowDialog() -eq "OK") { Write-Output $dialog.SelectedPath } >> select_folder.ps1
 
 :: === CREA SCRIPT PER FILE DI DESTINAZIONE ===
 echo Add-Type -AssemblyName System.Windows.Forms > select_file.ps1
 echo $dialog = New-Object System.Windows.Forms.SaveFileDialog >> select_file.ps1
 echo $dialog.Filter = "SquashFS Files (*.wsquashfs)|*.wsquashfs" >> select_file.ps1
 echo $dialog.Title = "Seleziona file di destinazione" >> select_file.ps1
-echo if ($dialog.ShowDialog() -eq "OK") { $dialog.FileName } >> select_file.ps1
+echo if ($dialog.ShowDialog() -eq "OK") { Write-Output $dialog.FileName } >> select_file.ps1
 
 :: === OTTIENI CARTELLA INPUT ===
 for /f "delims=" %%i in ('powershell -STA -File select_folder.ps1') do set INPUT=%%i
